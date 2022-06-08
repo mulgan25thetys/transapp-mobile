@@ -1,0 +1,32 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Conversion</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <div class="container">
+    <div style="margin-top: 20px;" class="ion-padding-start ion-padding-end ion-padding-bottom">
+      <ion-button  routerLink="/home"><ion-icon size="small"  name="home-outline"></ion-icon></ion-button>
+    </div>
+    <ion-list inset="true">
+      <ion-list-header> {{typeText}}</ion-list-header>
+
+      <form #form="ngForm">
+        <!-- {{form.value | json}} -->
+        <ion-item>
+          <ion-label>{{givenAmountText}} :</ion-label>
+          <ion-input [ngModelOptions]="{standalone: false}"  [(ngModel)]="transaction.givenAmount" #given="ngModel" name="given" type="number" clearInput placeholder="Entrer la somme"></ion-input>
+          <!-- {{given.value | json}} -->
+        </ion-item>
+        <div style="margin-top: 20px;" class="ion-padding-start ion-padding-end ion-padding-bottom">
+          <ion-button expand="block" (click)="convertir()" [disabled]="transaction.givenAmount ==null">Conversion</ion-button>
+        </div>
+     </form>
+    </ion-list>
+  </div>
+</ion-content>

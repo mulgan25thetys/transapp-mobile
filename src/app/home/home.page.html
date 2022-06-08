@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      TnCF-Transfert {{ today | date: 'yyyy' }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="background" no-scroll padding>
+
+  <div id="container">
+    <ion-list inset="true">
+      <ion-list-header>
+        <ion-label>
+         Transfert d'argent
+        </ion-label>
+      </ion-list-header>
+    
+      <ion-item>
+        <ion-label>Type de Transfert</ion-label>
+        <ion-select placeholder="Type de transfert"  [(ngModel)]="typeTransfert">
+          <ion-select-option value="sending">Envoi d'argent</ion-select-option>
+          <ion-select-option value="reception">Reception d'argent</ion-select-option>
+        </ion-select>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Votre Région</ion-label>
+        <ion-select placeholder="Région" [(ngModel)]="region">
+          <ion-select-option value="cf">Centrafrique</ion-select-option>
+          <ion-select-option value="tn">Tunisie</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-padding-start ion-padding-end ion-padding-bottom">
+      <ion-button expand="block" [disabled]="typeTransfert ==null || region==null" [routerLink]="['/conversion',region,typeTransfert]">Suivant</ion-button>
+    </div>
+  </div>
+</ion-content>
